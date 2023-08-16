@@ -32,21 +32,25 @@ const CartItem = props => (
   // return (                         //* no use with commented code
   <CartContext.Consumer>
     {value => {
-      const {deleteCartItem, incrementQuantity, decrementQuantity} = value
+      const {
+        removeCartItem,
+        incrementCartItemQuantity,
+        decrementCartItemQuantity,
+      } = value
       const {cartItemDetails} = props
 
       const {id, title, quantity, brand, price, imageUrl} = cartItemDetails
 
       const incrementItemQuantity = () => {
-        incrementQuantity(id)
+        incrementCartItemQuantity(id)
       }
 
       const decrementItemQuantity = () => {
-        decrementQuantity(id)
+        decrementCartItemQuantity(id)
       }
 
       const onDeleteCartItem = () => {
-        deleteCartItem(id)
+        removeCartItem(id)
       }
 
       return (
@@ -59,6 +63,7 @@ const CartItem = props => (
             </div>
             <div className="cart-quantity-container">
               <button
+                data-testid="minus"
                 type="button"
                 className="quantity-controller-button"
                 onClick={decrementItemQuantity}
@@ -67,6 +72,7 @@ const CartItem = props => (
               </button>
               <p className="cart-quantity">{quantity}</p>
               <button
+                data-testid="plus"
                 type="button"
                 className="quantity-controller-button"
                 onClick={incrementItemQuantity}
@@ -77,6 +83,7 @@ const CartItem = props => (
             <div className="total-price-delete-container">
               <p className="cart-total-price">Rs {price * quantity}/-</p>
               <button
+                data-testid="remove"
                 className="remove-button"
                 type="button"
                 onClick={onDeleteCartItem}

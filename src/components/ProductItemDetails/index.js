@@ -69,6 +69,10 @@ class ProductItemDetails extends Component {
         similarProductsData: updatedSimilarProductsData,
         apiStatus: apiStatusConstants.success,
       })
+    } else {
+      this.setState({
+        apiStatus: apiStatusConstants.failure,
+      })
     }
     if (response.status === 404) {
       this.setState({
@@ -83,6 +87,12 @@ class ProductItemDetails extends Component {
     </div>
   )
 
+  shopping = () => {
+    const {history} = this.props
+    console.log(history)
+    history.replace('/products')
+  }
+
   renderFailureView = () => (
     <div className="product-details-error-view-container">
       <img
@@ -91,7 +101,7 @@ class ProductItemDetails extends Component {
         className="error-view-image"
       />
       <h1 className="product-not-found-heading">Product Not Found</h1>
-      <button type="button" className="button">
+      <button type="button" className="button" onClick={this.shopping}>
         Continue Shopping
       </button>
     </div>
@@ -157,6 +167,7 @@ class ProductItemDetails extends Component {
                 <hr className="horizontal-line" />
                 <div className="quantity-container">
                   <button
+                    data-testid="minus"
                     type="button"
                     className="quantity-controller-button"
                     onClick={this.onDecrementQuantity}
@@ -165,6 +176,7 @@ class ProductItemDetails extends Component {
                   </button>
                   <p className="quantity">{quantity}</p>
                   <button
+                    data-testid="plus"
                     type="button"
                     className="quantity-controller-button"
                     onClick={this.onIncrementQuantity}

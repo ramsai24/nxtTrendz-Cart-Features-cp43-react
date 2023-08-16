@@ -17,7 +17,7 @@ class App extends Component {
     cartList: [],
   }
 
-  removeAll = () => {
+  removeAllCartItems = () => {
     this.setState({cartList: []})
   }
 
@@ -41,7 +41,7 @@ class App extends Component {
     }
   }
 
-  incrementQuantity = id => {
+  incrementCartItemQuantity = id => {
     const {cartList} = this.state
     const updateQuantityOfItemInCartList = cartList.map(each => {
       if (each.id === id) {
@@ -53,7 +53,7 @@ class App extends Component {
     this.setState({cartList: updateQuantityOfItemInCartList})
   }
 
-  decrementQuantity = id => {
+  decrementCartItemQuantity = id => {
     const {cartList} = this.state
 
     const returnDecreaseQuantity = quantity => {
@@ -74,7 +74,7 @@ class App extends Component {
     this.setState({cartList: updateQuantityOfItemInCartList})
   }
 
-  deleteCartItem = id => {
+  removeCartItem = id => {
     const {cartList} = this.state
 
     const filteredList = cartList.filter(remove => remove.id !== id)
@@ -90,10 +90,10 @@ class App extends Component {
           value={{
             cartList,
             addCartItem: this.addCartItem,
-            deleteCartItem: this.deleteCartItem,
-            incrementQuantity: this.incrementQuantity,
-            decrementQuantity: this.decrementQuantity,
-            removeAll: this.removeAll,
+            removeCartItem: this.removeCartItem,
+            incrementCartItemQuantity: this.incrementCartItemQuantity,
+            decrementCartItemQuantity: this.decrementCartItemQuantity,
+            removeAllCartItems: this.removeAllCartItems,
           }}
         >
           <Switch>
