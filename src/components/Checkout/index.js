@@ -8,15 +8,14 @@ const Checkout = () => (
 
       const orderTotal = () => {
         const costList = cartList.map(each => each.price * each.quantity)
-        console.log(costList)
 
         const costOfTotalItems = costList.reduce((each, accum) => each + accum)
-        console.log(costOfTotalItems)
+
         return costOfTotalItems
       }
 
       return (
-        cartList.length > 0 && (
+        (cartList.length > 0 || cartList.includes(null)) && (
           <div className="total-cartLen-checkoutBtn-container">
             <h1>Order Total :{orderTotal()}/-</h1>
             <p>{cartList.length} Items in Cart</p>

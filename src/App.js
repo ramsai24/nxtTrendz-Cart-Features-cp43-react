@@ -25,7 +25,7 @@ class App extends Component {
     const {cartList} = this.state
 
     const check = cartList.every(each => each.id !== product.id)
-    console.log(check)
+    // console.log(check)
 
     const updateQuantityOfItemInCartList = cartList.map(each => {
       if (each.id === product.id) {
@@ -57,21 +57,30 @@ class App extends Component {
     const {cartList} = this.state
 
     const returnDecreaseQuantity = quantity => {
-      if (quantity > 1) {
-        return quantity - 1
+      if (quantity === 0) {
+        return 0
       }
-
-      return quantity
+      return quantity - 1
     }
 
     const updateQuantityOfItemInCartList = cartList.map(each => {
+      const isZero = returnDecreaseQuantity(each.quantity) === 0
+      console.log(isZero)
       if (each.id === id) {
-        return {...each, quantity: returnDecreaseQuantity(each.quantity)}
+        if (!isZero) {
+          return {...each, quantity: returnDecreaseQuantity(each.quantity)}
+        }
+        return 0
       }
       return each
     })
-
-    this.setState({cartList: updateQuantityOfItemInCartList})
+    // if (!cartList.includes(0)) { //wrong statement shouldn't use carList revise below and replace it with
+    if (!updateQuantityOfItemInCartList.includes(0)) {
+      this.setState({cartList: updateQuantityOfItemInCartList})
+    } else {
+      this.setState({cartList: []})
+    }
+    console.log(updateQuantityOfItemInCartList)
   }
 
   removeCartItem = id => {
@@ -83,6 +92,7 @@ class App extends Component {
 
   render() {
     const {cartList} = this.state
+    console.log(cartList)
 
     return (
       <BrowserRouter>
