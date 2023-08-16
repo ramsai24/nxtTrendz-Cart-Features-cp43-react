@@ -95,7 +95,7 @@ class App extends Component {
     console.log(cartList)
 
     return (
-      <BrowserRouter>
+      <>
         <CartContext.Provider
           value={{
             cartList,
@@ -120,7 +120,7 @@ class App extends Component {
             <Redirect to="not-found" />
           </Switch>
         </CartContext.Provider>
-      </BrowserRouter>
+      </>
     )
   }
 }
