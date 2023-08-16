@@ -1,0 +1,4 @@
+.total-cartLen-checkoutBtn-container {
+  display: flex;
+  flex-direction: column;
+}

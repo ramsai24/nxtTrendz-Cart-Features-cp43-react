@@ -1,12 +1,24 @@
+.cart-bg-container {
+  display: flex;
+  background-size: cover;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 1px solid red;
+}
 .cart-container {
   display: flex;
   justify-content: center;
-  min-height: 75vh;
+  /* min-height: 75vh; */
+}
+
+.header-cartListView {
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
   .cart-container {
-    min-height: 90vh;
+    /* min-height: 90vh; */
   }
 }
 
@@ -37,4 +49,14 @@
   }
 }
 
-/* Write your CSS here */
+.cart-Title-removeAllBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-container {
+  align-self: flex-end;
+  margin: 20px;
+  margin-right: 50px;
+}

@@ -8,7 +8,7 @@ const SimilarProductItem = props => {
     <li className="similar-product-item">
       <img
         src={imageUrl}
-        className="similar-product-img"
+        className="similar-product-image"
         alt={`similar product ${title}`}
       />
       <p className="similar-product-title">{title}</p>

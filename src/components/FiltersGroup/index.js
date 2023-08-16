@@ -8,10 +8,10 @@ const FiltersGroup = props => {
 
     return ratingsList.map(rating => {
       const {changeRating, activeRatingId} = props
-      const ratingClassName = 
-        activeRatingId === rating.ratingId ? `and-up active-rating` : `and-up`
-      
       const onClickRatingItem = () => changeRating(rating.ratingId)
+
+      const ratingClassName =
+        activeRatingId === rating.ratingId ? `and-up active-rating` : `and-up`
 
       return (
         <li
@@ -22,7 +22,7 @@ const FiltersGroup = props => {
           <img
             src={rating.imageUrl}
             alt={`rating ${rating.ratingId}`}
-            className="rating-img"
+            className="rating-image"
           />
           <p className={ratingClassName}>& up</p>
         </li>

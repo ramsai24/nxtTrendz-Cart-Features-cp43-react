@@ -126,11 +126,36 @@ class AllProductsSection extends Component {
     }
   }
 
-  renderLoadingView = () => (
-    <div className="products-loader-container">
-      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
-    </div>
-  )
+  changeSortby = activeOptionId => {
+    this.setState({activeOptionId}, this.getProducts)
+  }
+
+  clearFilters = () => {
+    this.setState(
+      {
+        searchInput: '',
+        activeCategoryId: '',
+        activeRatingId: '',
+      },
+      this.getProducts,
+    )
+  }
+
+  changeRating = activeRatingId => {
+    this.setState({activeRatingId}, this.getProducts)
+  }
+
+  changeCategory = activeCategoryId => {
+    this.setState({activeCategoryId}, this.getProducts)
+  }
+
+  enterSearchInput = () => {
+    this.getProducts()
+  }
+
+  changeSearchInput = searchInput => {
+    this.setState({searchInput})
+  }
 
   renderFailureView = () => (
     <div className="products-error-view-container">
@@ -147,10 +172,6 @@ class AllProductsSection extends Component {
       </p>
     </div>
   )
-
-  changeSortby = activeOptionId => {
-    this.setState({activeOptionId}, this.getProducts)
-  }
 
   renderProductsListView = () => {
     const {productsList, activeOptionId} = this.state
@@ -184,6 +205,12 @@ class AllProductsSection extends Component {
     )
   }
 
+  renderLoadingView = () => (
+    <div className="products-loader-container">
+      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+    </div>
+  )
+
   renderAllProducts = () => {
     const {apiStatus} = this.state
 
@@ -197,33 +224,6 @@ class AllProductsSection extends Component {
       default:
         return null
     }
-  }
-
-  clearFilters = () => {
-    this.setState(
-      {
-        searchInput: '',
-        activeCategoryId: '',
-        activeRatingId: '',
-      },
-      this.getProducts,
-    )
-  }
-
-  changeRating = activeRatingId => {
-    this.setState({activeRatingId}, this.getProducts)
-  }
-
-  changeCategory = activeCategoryId => {
-    this.setState({activeCategoryId}, this.getProducts)
-  }
-
-  enterSearchInput = () => {
-    this.getProducts()
-  }
-
-  changeSearchInput = searchInput => {
-    this.setState({searchInput})
   }
 
   render() {

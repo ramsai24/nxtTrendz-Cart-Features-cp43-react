@@ -3,7 +3,6 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 
 import ProductCard from '../ProductCard'
-
 import './index.css'
 
 const apiStatusConstants = {
@@ -77,8 +76,8 @@ class PrimeDealsSection extends Component {
   renderPrimeDealsFailureView = () => (
     <img
       src="https://assets.ccbp.in/frontend/react-js/exclusive-deals-banner-img.png"
-      alt="register prime"
-      className="register-prime-img"
+      alt="Register Prime"
+      className="register-prime-image"
     />
   )
 
